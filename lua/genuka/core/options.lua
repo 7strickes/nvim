@@ -40,3 +40,4 @@ opt.splitright = true
 opt.splitbelow = true
 
 opt.swapfile = false
+-- vim.g.python3_host_prog = "~/.venvs/jupynium/bin/python"

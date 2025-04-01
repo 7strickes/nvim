@@ -28,6 +28,8 @@ return {
 
     local lspkind = require("lspkind")
 
+    local compare = cmp.config.compare
+
     -- loads vscode style snippets from installed plugins (e.g. friendly-snippets)
     require("luasnip.loaders.from_vscode").lazy_load()
 
@@ -37,8 +39,12 @@ return {
       },
 
       sorting = {
+        priority_weight = 1.0,
         comparators = {
           require("clangd_extensions.cmp_scores"),
+          compare.score,
+          compare.recently_used,
+          compare.locality,
         },
       },
 
@@ -76,6 +82,7 @@ return {
         { name = "luasnip" }, -- snippets
         { name = "buffer" }, -- text within current buffer
         { name = "path" }, -- file system paths
+        { name = "jupynium", priority = 1000 },
       }),
 
       -- configure lspkind for vs-code like pictograms in completion menu
