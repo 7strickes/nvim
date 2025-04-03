@@ -4,6 +4,8 @@ local opt = vim.opt
 
 opt.relativenumber = true
 opt.number = true
+opt.termguicolors = true
+-- opt.guifont = "JetBrainsMono Nerd Font:h12:b"
 
 -- Configure diagnostics in Neovim
 vim.diagnostic.config({
