@@ -25,7 +25,7 @@ keymap.set("n", "<leader>cM", "<cmd>ClangdMemoryUsage expand_preamble<CR>", { de
 
 keymap.set("n", "<leader>s", "<C-w>v", { desc = "Split menu" }) -- split window vertically
 keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" }) -- split window vertically
-keymap.set("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" }) -- split window horizontally
+keymap.set("n", "<leader>s-", "<C-w>s", { desc = "Split window horizontally" }) -- split window horizontally
 keymap.set("n", "<leader>se", "<C-w>=", { desc = "Make splits equal size" }) -- make split windows equal width & height
 keymap.set("n", "<leader>sl", "<C-w>h", { desc = "Move to left split" }) -- make split windows equal width & height
 keymap.set("n", "<leader>sr", "<C-w>l", { desc = "Move to right split" }) -- make split windows equal width & height
@@ -40,4 +40,4 @@ keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" }) --  
 keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" }) --  go to previous tab
 keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" }) --  mve current buffer to new tab
 
-keymap.set("n", "<leader>a", "<cmd>Alpha<CR>", { desc = "go home" }) --  mve current buffer to new tab
+keymap.set("n", "<leader>a", "<cmd>Alpha<CR>", { desc = "go home" })

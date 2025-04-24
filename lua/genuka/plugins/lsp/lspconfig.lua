@@ -44,7 +44,7 @@ return {
             "build.ninja"
           )(fname) or require("lspconfig.util").root_pattern("compile_commands.json", "compile_flags.txt")(
             fname
-          ) or require("lspconfig.util").find_git_ancestor(fname)
+          ) or vim.fs.dirname(vim.fs.find(".git", { path = fname, upward = true })[1])
         end,
         capabilities = {
           offsetEncoding = { "utf-16" },
@@ -77,6 +77,14 @@ return {
     local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
     local keymap = vim.keymap -- for conciseness
+
+    local diagnostic_goto = function(next, severity)
+      local go = next and vim.diagnostic.goto_next or vim.diagnostic.goto_prev
+      severity = severity and vim.diagnostic.severity[severity] or nil
+      return function()
+        go({ severity = severity })
+      end
+    end
 
     vim.api.nvim_create_autocmd("LspAttach", {
       group = vim.api.nvim_create_augroup("UserLspConfig", {}),
@@ -114,10 +122,22 @@ return {
         keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts) -- show diagnostics for line
 
         opts.desc = "Go to previous diagnostic"
-        keymap.set("n", "[d", vim.diagnostic.goto_prev, opts) -- jump to previous diagnostic in buffer
+        keymap.set("n", "[d", diagnostic_goto(true), opts) -- jump to previous diagnostic in buffer
 
         opts.desc = "Go to next diagnostic"
-        keymap.set("n", "]d", vim.diagnostic.goto_next, opts) -- jump to next diagnostic in buffer
+        keymap.set("n", "]d", diagnostic_goto(false), opts) -- jump to next diagnostic in buffer
+
+        opts.desc = "Go to next error"
+        keymap.set("n", "]e", diagnostic_goto(true, "ERROR"), opts) -- jump to next diagnostic in buffer
+
+        opts.desc = "Go to next warning"
+        keymap.set("n", "]w", diagnostic_goto(true, "WARN"), opts) -- jump to next diagnostic in buffer
+
+        opts.desc = "Go to prev error"
+        keymap.set("n", "[e", diagnostic_goto(false, "ERROR"), opts) -- jump to next diagnostic in buffer
+
+        opts.desc = "Go to prev warning"
+        keymap.set("n", "[w", diagnostic_goto(false, "WARN"), opts) -- jump to next diagnostic in buffer
 
         opts.desc = "Show documentation for what is under cursor"
         keymap.set("n", "K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
