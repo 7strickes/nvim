@@ -12,5 +12,10 @@ return {
     { "<leader>xq", "<cmd>Trouble quickfix toggle<CR>", desc = "Open trouble quickfix list" },
     { "<leader>xl", "<cmd>Trouble loclist toggle<CR>", desc = "Open trouble location list" },
     { "<leader>xt", "<cmd>Trouble todo toggle<CR>", desc = "Open todos in trouble" },
+    {
+      "<leader>xT",
+      "<cmd>Trouble todo toggle filter = {tag = {TODO,FIX,FIXME}}<CR>",
+      desc = "Todo/Fix/Fixme (Trouble)",
+    },
   },
 }

@@ -23,7 +23,7 @@ keymap.set("n", "<leader>cM", "<cmd>ClangdMemoryUsage expand_preamble<CR>", { de
 
 -- window management
 
-keymap.set("n", "<leader>s", "<C-w>v", { desc = "Split menu" }) -- split window vertically
+keymap.set("n", "<leader>s", "", { desc = "Split menu" }) -- split window vertically
 keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" }) -- split window vertically
 keymap.set("n", "<leader>s-", "<C-w>s", { desc = "Split window horizontally" }) -- split window horizontally
 keymap.set("n", "<leader>se", "<C-w>=", { desc = "Make splits equal size" }) -- make split windows equal width & height
