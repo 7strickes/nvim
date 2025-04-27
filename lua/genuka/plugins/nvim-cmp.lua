@@ -1,5 +1,6 @@
 return {
   "hrsh7th/nvim-cmp",
+  enabled = true,
   event = "InsertEnter",
   dependencies = {
     "hrsh7th/cmp-buffer", -- source for text in buffer
@@ -15,6 +16,7 @@ return {
     "rafamadriz/friendly-snippets", -- useful snippets
     "onsails/lspkind.nvim", -- vs-code like pictograms
     "clangd_extensions.nvim",
+    "saghen/blink.cmp",
   },
   opts = function(_, opts)
     opts.sorting = opts.sorting or {}
