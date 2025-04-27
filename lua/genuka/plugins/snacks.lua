@@ -28,9 +28,9 @@ return {
   ---@type snacks.Config
   opts = {
     bigfile = { enabled = true },
-    dashboard = { enabled = true },
+    -- dashboard = { enabled = true },
     explorer = { enabled = true },
-    indent = { enabled = true },
+    -- indent = { enabled = true },
     input = { enabled = true },
     notifier = {
       enabled = true,
@@ -564,5 +564,8 @@ return {
         Snacks.toggle.dim():map("<leader>uD")
       end,
     })
+  end,
+  config = function()
+    -- Configure Alpha.nvim as the dashboard
   end,
 }

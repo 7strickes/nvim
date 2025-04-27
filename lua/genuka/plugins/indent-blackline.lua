@@ -1,5 +1,6 @@
 return {
   "lukas-reineke/indent-blankline.nvim",
+  enabled = true,
   event = { "BufReadPre", "BufNewFile" },
   main = "ibl",
 
@@ -26,6 +27,7 @@ return {
       vim.api.nvim_set_hl(0, "RainbowViolet", { fg = "#C678DD" })
       vim.api.nvim_set_hl(0, "RainbowCyan", { fg = "#56B6C2" })
     end)
+    require("ibl").setup({ indent = { highlight = highlight } })
 
     Snacks.toggle({
       name = "Indention Guides",
@@ -43,7 +45,7 @@ return {
         tab_char = "│",
         highlight = highlight,
       },
-      scope = { show_start = false, show_end = false },
+      scope = { show_start = true, show_end = true },
       exclude = {
         filetypes = {
           "Trouble",
