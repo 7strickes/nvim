@@ -1,3 +1,4 @@
+local horizon = require("lualine.themes.horizon")
 return {
   "nvim-lualine/lualine.nvim",
   dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -48,11 +49,12 @@ return {
         c = { bg = colors.inactive_bg, fg = colors.semilightgray },
       },
     }
-
+    horizon.normal.a.bg = "#E4D00A"
+    horizon.insert.a.bg = "#00F7FB"
     -- configure lualine with modified theme
     lualine.setup({
       options = {
-        theme = my_lualine_theme,
+        theme = horizon,
       },
       sections = {
         lualine_x = {

@@ -1,17 +1,15 @@
 return {
   "goolord/alpha-nvim",
-  -- event = "VimEnter",
-  enabled = true,
+  event = "VimEnter",
   opts = function()
     local dashboard = require("alpha.themes.dashboard")
     local logo = [[
-                                                            
-      ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗ 
-      ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║ 
-      ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║ 
-      ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║ 
-      ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║ 
-      ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝ 
+    ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗
+    ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║
+    ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║
+    ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║
+    ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║
+    ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝
     ]]
 
     dashboard.section.header.val = vim.split(logo, "\n")
@@ -52,21 +50,6 @@ return {
     end
 
     require("alpha").setup(dashboard.opts)
-    -- Hide statusline in Alpha dashboard
-    vim.api.nvim_create_autocmd("FileType", {
-      pattern = "alpha",
-      callback = function()
-        vim.o.laststatus = 0 -- Disable statusline
-      end,
-    })
-
-    -- Restore statusline after leaving Alpha
-    vim.api.nvim_create_autocmd("BufLeave", {
-      pattern = "alpha",
-      callback = function()
-        vim.o.laststatus = 2 -- Restore statusline
-      end,
-    })
 
     vim.api.nvim_create_autocmd("User", {
       once = true,
