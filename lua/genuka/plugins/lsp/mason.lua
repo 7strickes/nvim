@@ -43,7 +43,8 @@ return {
         "graphql",
         "emmet_ls",
         "prismals",
-        "pyright",
+        -- "pyright",
+        "ruff",
         "clangd",
       },
     })
@@ -52,9 +53,9 @@ return {
       ensure_installed = {
         "prettier", -- prettier formatter
         "stylua", -- lua formatter
-        "isort", -- python formatter
-        "black", -- python formatter
-        "pylint",
+        -- "isort", -- python formatter
+        -- "black", -- python formatter
+        -- "pylint",
         "eslint_d",
         "hadolint",
       },
