@@ -28,7 +28,30 @@ return {
       --     },
       --   },
       -- },
-
+      ruff = {
+        cmd_env = { RUFF_TRACE = "messages" },
+        init_options = {
+          settings = {
+            logLevel = "error",
+          },
+        },
+        keys = {
+          {
+            "<leader>co",
+            LazyVim.lsp.action["source.organizeImports"],
+            desc = "Organize Imports",
+          },
+        },
+      },
+      ruff_lsp = {
+        keys = {
+          {
+            "<leader>co",
+            LazyVim.lsp.action["source.organizeImports"],
+            desc = "Organize Imports",
+          },
+        },
+      },
       -- docker setup
       dockerls = {},
       docker_compose_language_service = {},
@@ -65,6 +88,19 @@ return {
           clangdFileStatus = true,
         },
       },
+    },
+    setup = {
+      clangd = function(_, opts)
+        local clangd_ext_opts = LazyVim.opts("clangd_extensions.nvim")
+        require("clangd_extensions").setup(vim.tbl_deep_extend("force", clangd_ext_opts or {}, { server = opts }))
+        return false
+      end,
+      ruff = function()
+        LazyVim.lsp.on_attach(function(client, _)
+          -- Disable hover in favor of Pyright
+          client.server_capabilities.hoverProvider = false
+        end, ruff)
+      end,
     },
   },
   config = function()
@@ -155,7 +191,7 @@ return {
     -- Change the Diagnostic symbols in the sign column (gutter)
     -- (not in youtube nvim video)
     vim.fn.sign_define("DiagnosticSignError", { text = "✗", texthl = "DiagnosticError", numhl = "DiagnosticError" })
-    vim.fn.sign_define("DiagnosticSignWarn", { text = " ", texthl = "DiagnosticWarn", numhl = "DiagnosticWarn" })
+    vim.fn.sign_define("DiagnosticSignWarn", { text = "", texthl = "DiagnosticWarn", numhl = "DiagnosticWarn" })
     vim.fn.sign_define("DiagnosticSignInfo", { text = "󰥟", texthl = "DiagnosticInfo", numhl = "DiagnosticInfo" })
     vim.fn.sign_define("DiagnosticSignHint", { text = " ", texthl = "DiagnosticHint", numhl = "DiagnosticHint" })
 
@@ -166,51 +202,6 @@ return {
           capabilities = capabilities,
         })
       end,
-      ["svelte"] = function()
-        -- configure svelte server
-        lspconfig["svelte"].setup({
-          capabilities = capabilities,
-          on_attach = function(client, bufnr)
-            vim.api.nvim_create_autocmd("BufWritePost", {
-              pattern = { "*.js", "*.ts" },
-              callback = function(ctx)
-                -- Here use ctx.match instead of ctx.file
-                client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.match })
-              end,
-            })
-          end,
-        })
-      end,
-      ["graphql"] = function()
-        -- configure graphql language server
-        lspconfig["graphql"].setup({
-          capabilities = capabilities,
-          filetypes = { "graphql", "gql", "svelte", "typescriptreact", "javascriptreact" },
-        })
-      end,
-      ["emmet_ls"] = function()
-        -- configure emmet language server
-        lspconfig["emmet_ls"].setup({
-          capabilities = capabilities,
-          filetypes = {
-            "html",
-            "typescriptreact",
-            "javascriptreact",
-            "css",
-            "sass",
-            "scss",
-            "less",
-            "svelte",
-          },
-        })
-      end,
-      -- ["clangd"] = function()
-      --   lspconfig["clangd"].setup({
-      --     capabilities = capabilities,
-      --     filetypes = { "c", "cpp", "objc" },
-      --   })
-      -- end,
-
       ["lua_ls"] = function()
         -- configure lua server (with special settings)
         lspconfig["lua_ls"].setup({
