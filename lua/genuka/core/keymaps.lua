@@ -18,7 +18,7 @@ keymap.set("n", "<leader>cc", "<cmd>ClangdSwitchSourceHeader<CR>", { desc = "act
 keymap.set("v", "<leader>cA", "<cmd>ClangdAST<CR>", { desc = "Adanced syntax tree" })
 keymap.set("n", "<leader>ci", "<cmd>ClangdSymbolInfo<CR>", { desc = "Show Clangd Symbol Info" })
 keymap.set("n", "<leader>ct", "<cmd>ClangdTypeHierarchy<CR>", { desc = "type hierarchy" })
-keymap.set("n", "<leader>cm", "<cmd>:ClangdMemoryUsage<CR>", { desc = "current memory use" })
+keymap.set("n", "<leader>cz", "<cmd>:ClangdMemoryUsage<CR>", { desc = "current memory use" })
 keymap.set("n", "<leader>cM", "<cmd>ClangdMemoryUsage expand_preamble<CR>", { desc = "full memory usage" })
 
 -- window management
