@@ -1,4 +1,3 @@
-local horizon = require("lualine.themes.horizon")
 return {
   "nvim-lualine/lualine.nvim",
   dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -6,6 +5,7 @@ return {
     local lualine = require("lualine")
     local lazy_status = require("lazy.status") -- to configure lazy pending updates count
 
+    local horizon = require("lualine.themes.horizon")
     local colors = {
       blue = "#65D1FF",
       green = "#3EFFDC",

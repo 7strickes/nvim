@@ -34,6 +34,10 @@ require("lazy").setup({
     { import = "genuka.plugins" },
     { import = "genuka.plugins.lsp" },
   },
+  defaults = {
+    lazy = false,
+    version = false,
+  },
   checker = {
     enabled = true,
     notify = false,
