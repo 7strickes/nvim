@@ -156,8 +156,8 @@ return {
     -- (not in youtube nvim video)
     vim.fn.sign_define("DiagnosticSignError", { text = "✗", texthl = "DiagnosticError", numhl = "DiagnosticError" })
     vim.fn.sign_define("DiagnosticSignWarn", { text = " ", texthl = "DiagnosticWarn", numhl = "DiagnosticWarn" })
-    vim.fn.sign_define("DiagnosticSignInfo", { text = " ", texthl = "DiagnosticInfo", numhl = "DiagnosticInfo" })
-    vim.fn.sign_define("DiagnosticSignHint", { text = "󰠠 ", texthl = "DiagnosticHint", numhl = "DiagnosticHint" })
+    vim.fn.sign_define("DiagnosticSignInfo", { text = "󰥟", texthl = "DiagnosticInfo", numhl = "DiagnosticInfo" })
+    vim.fn.sign_define("DiagnosticSignHint", { text = " ", texthl = "DiagnosticHint", numhl = "DiagnosticHint" })
 
     mason_lspconfig.setup_handlers({
       -- default handler for installed servers

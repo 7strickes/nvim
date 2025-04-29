@@ -18,6 +18,7 @@ return {
     "onsails/lspkind.nvim", -- vs-code like pictograms
     "clangd_extensions.nvim",
     "saghen/blink.cmp",
+    "brenoprata10/nvim-highlight-colors",
   },
   opts = function(_, opts)
     opts.sorting = opts.sorting or {}
