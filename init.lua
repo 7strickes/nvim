@@ -1,2 +1,1 @@
-require("genuka.core")
-require("genuka.lazy")
+require("config.lazy")
