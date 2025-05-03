@@ -58,6 +58,7 @@ return {
         -- "pylint",
         "eslint_d",
         "hadolint",
+        "clang-format",
       },
     })
   end,
