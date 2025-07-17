@@ -38,7 +38,6 @@ return {
         cell = { top_margin_percent = 20 },
       },
       jupynium_file_pattern = { "*.ju.*" },
-<<<<<<< HEAD
 
       use_default_keybindings = false,
       textobjects = {
@@ -51,11 +50,9 @@ return {
 
       -- Dim all cells except the current one
       -- Related command :JupyniumShortsightedToggle
-=======
       use_default_keybindings = false,
       textobjects = { use_default_keybindings = true },
       syntax_highlight = { enable = true },
->>>>>>> d009d5334c63c64e01ae9c26f8e56327da63d343
       shortsighted = false,
       kernel_hover = {
         floating_win_opts = {
@@ -76,7 +73,6 @@ return {
       hi! link JupyniumMagicCommand Keyword
     ]])
 
-<<<<<<< HEAD
     -- Please share your favourite settings on other colour schemes, so I can add defaults.
     -- Currently, tokyonight is supported.
 
@@ -122,11 +118,8 @@ return {
         set_default_keymaps(args.buf)
       end,
     })
-  end,
-=======
     -- 🔑 Your custom keymaps
     local opts = { desc = "Jupynium", noremap = true, silent = true }
->>>>>>> d009d5334c63c64e01ae9c26f8e56327da63d343
 
     vim.keymap.set(
       "n",
