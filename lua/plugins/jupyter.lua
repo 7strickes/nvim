@@ -88,7 +88,7 @@ return {
       -- Modify this if you already have lots of files in Jupytext format, for example.
       jupynium_file_pattern = { "*.ju.*" },
 
-      use_default_keybindings = true,
+      use_default_keybindings = false,
       textobjects = {
         use_default_keybindings = true,
       },
@@ -133,6 +133,49 @@ return {
 
     -- Please share your favourite settings on other colour schemes, so I can add defaults.
     -- Currently, tokyonight is supported.
+
+    -- Set up custom keymaps
+    local function set_default_keymaps(buf_id)
+      vim.keymap.set({ "n", "x" }, "<space>jx", "<cmd>JupyniumExecuteSelectedCells<CR>", {
+        buffer = buf_id,
+        desc = "Jupynium execute selected cells",
+      })
+      vim.keymap.set({ "n", "x" }, "<space>c", "<cmd>JupyniumClearSelectedCellsOutputs<CR>", {
+        buffer = buf_id,
+        desc = "Jupynium clear selected cells",
+      })
+      vim.keymap.set("n", "<space>K", "<cmd>JupyniumKernelHover<cr>", {
+        buffer = buf_id,
+        desc = "Jupynium hover (inspect a variable)",
+      })
+      vim.keymap.set({ "n", "x" }, "<space>js", "<cmd>JupyniumScrollToCell<cr>", {
+        buffer = buf_id,
+        desc = "Jupynium scroll to cell",
+      })
+      vim.keymap.set({ "n", "x" }, "<space>jo", "<cmd>JupyniumToggleSelectedCellsOutputsScroll<cr>", {
+        buffer = buf_id,
+        desc = "Jupynium toggle selected cell output scroll",
+      })
+      vim.keymap.set("", "<PageUp>", "<cmd>JupyniumScrollUp<cr>", {
+        buffer = buf_id,
+        desc = "Jupynium scroll up",
+      })
+      vim.keymap.set("", "<PageDown>", "<cmd>JupyniumScrollDown<cr>", {
+        buffer = buf_id,
+        desc = "Jupynium scroll down",
+      })
+      vim.keymap.set("n", "<space>jv", "<cmd>JupyniumStartSync<CR>", {
+        buffer = buf_id,
+        desc = "Jupynium start sync",
+      })
+    end
+
+    vim.api.nvim_create_autocmd("FileType", {
+      pattern = "*.ju.*", -- or "jupyter" if Jupynium uses that
+      callback = function(args)
+        set_default_keymaps(args.buf)
+      end,
+    })
   end,
 
   -- Please share your favourite settings on other colour schemes, so I can add defaults.
