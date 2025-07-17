@@ -3,6 +3,7 @@ return {
   enabled = true,
   event = "InsertEnter",
   dependencies = {
+    "codeium.nvim",
     "hrsh7th/cmp-buffer", -- source for text in buffer
     "hrsh7th/cmp-path", -- source for file system paths
     "hrsh7th/cmp-cmdline",
@@ -60,6 +61,7 @@ return {
       Operator = "  ",
       TypeParameter = "  ",
       Snippet = " ",
+      Codeium = " ",
     }
     -- loads vscode style snippets from installed plugins (e.g. friendly-snippets)
     require("luasnip.loaders.from_vscode").lazy_load()
@@ -119,6 +121,7 @@ return {
         { name = "buffer" }, -- text within current buffer
         { name = "path" }, -- file system paths
         { name = "jupynium", priority = 1000 },
+        { name = "codeium", priority = 1000 },
       }),
 
       -- configure lspkind for vs-code like pictograms in completion menu

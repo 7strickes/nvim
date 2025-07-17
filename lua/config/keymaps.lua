@@ -40,4 +40,4 @@ keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" }) --  
 keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" }) --  go to previous tab
 keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" }) --  mve current buffer to new tab
 
-keymap.set("n", "<leader>a", "<cmd>Dashboard<CR>", { desc = "go home" })
+-- keymap.set("n", "<leader>q", "<cmd>Dashboard<CR>", { desc = "go home" })
