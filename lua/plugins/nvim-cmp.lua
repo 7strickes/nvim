@@ -3,7 +3,6 @@ return {
   enabled = true,
   event = "InsertEnter",
   dependencies = {
-    "codeium.nvim",
     "hrsh7th/cmp-buffer", -- source for text in buffer
     "hrsh7th/cmp-path", -- source for file system paths
     "hrsh7th/cmp-cmdline",

@@ -65,6 +65,7 @@ return {
       lua = { "stylua" },
       python = { "isort", "black" },
       c = { "clang-format" },
+      -- asm = { "asmfmt" },
     },
     formatters = {
       ["clang-format"] = {

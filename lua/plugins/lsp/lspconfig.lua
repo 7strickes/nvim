@@ -10,6 +10,7 @@ return {
   },
   opts = {
     servers = {
+      asm_lsp = {},
       tsserver = {
         enabled = false,
       },
@@ -196,12 +197,13 @@ return {
       },
     },
     setup = {
+      asm_lsp = function()
+        return true
+      end,
       tsserver = function()
-        -- disable tsserver
         return true
       end,
       ts_ls = function()
-        -- disable tsserver
         return true
       end,
       vtsls = function(_, opts)

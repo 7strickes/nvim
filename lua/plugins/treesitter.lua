@@ -50,6 +50,7 @@ return {
         "dockerfile",
         "ninja",
         "rst",
+        "asm",
       },
       incremental_selection = {
         enable = true,
